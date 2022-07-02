@@ -25,7 +25,7 @@ function logKey(e) {
     setValue('\n')
   } else if (e.code === 'Backspace') {
     removeValue()
-  } else {
+  } else if (e.key.length === 1) {
     setValue(e.key.toUpperCase())
   }
 }
