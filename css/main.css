@@ -13,7 +13,14 @@ body {
 }
 
 #cursor {
-  color: #9b889b;
-  background-color: #9b889b;
+  display: inline-block;
+  position: relative;
+  top: 6px;
+  left: 1px;
+  height: 36px;
+  margin-right: -1ch;
+  color: #472d47;
+  color: rgba(0, 0, 0, 0);
+  background-color: #7CEA9C;
   animation: cursor-blink 1.5s steps(2) infinite;
 }
