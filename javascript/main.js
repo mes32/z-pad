@@ -1,36 +1,46 @@
-let text = 'HELLO WORLD!\n'
+let startingText = 'HELLO WORLD!\n'
 
-function setValue(newValue) {
+function insertCursor() {
   const textArea = document.getElementById('textarea')
+  const span = document.createElement('span')
+  span.innerHTML = '_'
+  span.id = 'cursor'
+  textArea.appendChild(span)
+}
+
+function insertValue(newValue) {
+  const textArea = document.getElementById('textarea')
+  const cursor = document.getElementById('cursor')
 
   for (let i = 0, c = ''; c = newValue.charAt(i); i++) {
     if (c === '\n') {
       const newLine = document.createElement('br')
-      textArea.appendChild(newLine)
+      textArea.insertBefore(newLine, cursor)
     } else {
       const span = document.createElement('span')
       span.innerHTML = c
-      textArea.appendChild(span)
+      textArea.insertBefore(span, cursor)
     }
   }
 }
 
 function removeValue() {
   const textArea = document.getElementById('textarea')
-  textArea.removeChild(textArea.lastChild)
+  textArea.removeChild(textArea.lastChild.previousSibling)
 }
 
 function logKey(e) {
   if (e.code === 'Enter') {
-    setValue('\n')
+    insertValue('\n')
   } else if (e.code === 'Backspace') {
     removeValue()
   } else if (e.key.length === 1) {
-    setValue(e.key.toUpperCase())
+    insertValue(e.key.toUpperCase())
   }
 }
 
 window.onload = function() {
-  setValue(text)
+  insertCursor()
+  insertValue(startingText)
   document.addEventListener('keydown', logKey)
 }

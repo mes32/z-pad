@@ -2,6 +2,18 @@ body {
   font-family: 'Roboto Mono', monospace;
   font-size: 36px;
   padding: 36px 4%;
-  background-color: #593959;
-  color: #A573A5;
+  background-color: #472d47;
+  color: #9b889b;
+}
+
+@keyframes cursor-blink {
+  0% {
+    opacity: 0%;
+  }
+}
+
+#cursor {
+  color: #9b889b;
+  background-color: #9b889b;
+  animation: cursor-blink 1.5s steps(2) infinite;
 }
